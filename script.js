@@ -35,7 +35,12 @@ const aiFootImages=[
  ['assets/nails/ai-library/foot-03-navy-cat-eye.jpg','Navy cat-eye pedicure'],
  ['assets/nails/ai-library/foot-04-nude-gold.jpg','Nude pedicure with gold detail'],
  ['assets/nails/ai-library/foot-05-peach.jpg','Glossy peach pedicure']];
-const galleryImages=[...aiHandImages,...aiFootImages,images[images.length-1]];
+const realSalonImages=[
+ ['Acrylic nail.jpg','Pink French acrylic set'],
+ ['biab.jpg','Natural BIAB French manicure'],
+ ['22cc2a863116cd4da55da528849704ef2220d224.jpg','Pink floral manicure and pedicure inspiration'],
+ ['8c5fb5216a9a1d637e380e03295fba0f256b14b8.jpg','Soft pink French pedicure']];
+const galleryImages=[...images.slice(0,-1),...realSalonImages];
 const data={
 'Acrylic':[['Full Set with Shellac',40,75],['Full Set with Shellac and French White Tips',43,90],['Acrylic Refill with Shellac',35,60],['Acrylic Refill with French White Tips',38,60],['Take Off and New Acrylic Set',55,90],['Full Set Acrylic Toes',40,60],['Full Set Acrylic Toes with Design',45,75],['Acrylic Toes Refill',35,60],['Take Off and New Acrylic Set with French White Tips',60,90],['Take Off and Redone',50,90],['Nail Design Add-on',5,15],['One Nail Extension with Tip',5,15]],
 'BIAB Builder Gel':[['BIAB Full Set',40,60],['BIAB Full Set with Gel Colour',45,75],['BIAB Full Set with Tips and French White Tips',50,90],['BIAB Refill with Gel Colour',35,60],['BIAB Refill with French White Tips',40,60],['Take Off and New BIAB Set with Tips',48,90],['Take Off and BIAB Overlay',45,75]],
@@ -45,13 +50,13 @@ const data={
 'Ombre':[['Ombre Full Set',50,75],['Ombre Refill, One Colour',35,60],['Take Off and New Ombre Set',50,90]],
 'Cat Eye':[['Cat Eye Full Set',50,75],['Cat Eye Refill',35,60],['Take Off and New Cat Eye Set',50,90]]};
 const popular=[
- ['Acrylic Nails','Beautiful, durable extensions tailored to your shape, length and colour.','From £35',aiHandImages[10],'Acrylic','1h 15m'],
- ['BIAB Builder Gel','Strengthen natural nails with a smooth, long-lasting finish.','From £35',aiHandImages[1],'BIAB Builder Gel','1h'],
- ['Manicure','Careful shaping and cuticle care with your chosen polished finish.','From £20',aiHandImages[9],'Manicure','45m'],
- ['Spa Pedicure','Relaxing foot care with professional shaping and colour.','From £35',aiFootImages[1],'Pedicure','1h'],
- ['Ombre Nails','Seamless colour blending for a soft, elegant statement.','From £35',aiHandImages[14],'Ombre','1h 15m'],
- ['Cat Eye Nails','A luminous magnetic finish that shifts beautifully in the light.','From £35',aiHandImages[5],'Cat Eye','1h 15m'],
- ['Bespoke Nail Art','Personal details, chrome and hand-finished designs.','From £5',aiHandImages[12],'Extra Services','30m']];
+ ['Acrylic Nails','Beautiful, durable extensions tailored to your shape, length and colour.','From £35',images[0],'Acrylic','1h 15m'],
+ ['BIAB Builder Gel','Strengthen natural nails with a smooth, long-lasting finish.','From £35',images[1],'BIAB Builder Gel','1h'],
+ ['Manicure','Careful shaping and cuticle care with your chosen polished finish.','From £20',realSalonImages[1],'Manicure','45m'],
+ ['Spa Pedicure','Relaxing foot care with professional shaping and colour.','From £35',images[12],'Pedicure','1h'],
+ ['Ombre Nails','Seamless colour blending for a soft, elegant statement.','From £35',realSalonImages[0],'Ombre','1h 15m'],
+ ['Pedicure Colour','Fresh colour and a clean, carefully finished shape.','From £20',images[4],'Pedicure','45m'],
+ ['French Finish','A crisp, timeless finish for hands or toes.','From £5',images[2],'Extra Services','30m']];
 const price=v=>typeof v==='number'?`£${v}`:v;
 document.querySelector('#service-grid').innerHTML=popular.map(s=>`<article class="service-card reveal"><img src="${s[3][0]}" loading="lazy" alt="${s[3][1]} for ${s[0]} at Tring Nails and Beauty"><div class="service-card-body"><h3>${s[0]}</h3><div class="service-meta"><span>${s[2].replace('From ','<small>From</small> ')}</span><time>${s[5]}</time></div></div><button class="service-book" data-book="${s[4]}">Book Now</button></article>`).join('');
 const serviceSlider=document.querySelector('#service-grid');
@@ -79,7 +84,7 @@ function renderPrices(){priceGrid.innerHTML=data[priceCategory].map((x,i)=>{cons
 renderPrices();
 priceTabs.onclick=e=>{const b=e.target.closest('[data-price-cat]');if(!b)return;priceCategory=b.dataset.priceCat;priceTabs.querySelectorAll('button').forEach(x=>{const active=x===b;x.classList.toggle('active',active);x.setAttribute('aria-selected',active)});renderPrices()};
 const slidePrices=direction=>priceGrid.scrollBy({left:direction*(priceGrid.querySelector('.price-service-card').getBoundingClientRect().width+24),behavior:'smooth'});document.querySelector('.price-prev').onclick=()=>slidePrices(-1);document.querySelector('.price-next').onclick=()=>slidePrices(1);
-document.querySelector('#gallery-grid').innerHTML=galleryImages.map((x,i)=>`<button data-image="${i}" aria-label="Open ${x[1]} image"><img src="${x[0]}" loading="lazy" alt="${x[1]} by Tring Nails and Beauty"></button>`).join('');
+document.querySelector('#gallery-grid').innerHTML=galleryImages.map((x,i)=>`<button data-image="${i}" aria-label="Open ${x[1]} image"><img src="${x[0]}" loading="lazy" alt="${x[1]} by Tring Nails and Beauty"></button>`).join('')+`<aside class="gallery-cta"><span>Inspired?</span><h3>Let’s create your next set.</h3><p>Bring your favourite colour, shape or reference — we’ll make it personal.</p><a class="button" href="#booking">Book an Appointment</a></aside>`;
 const tabs=document.querySelector('#category-tabs'), services=document.querySelector('#booking-services');let category='Acrylic',selected=null,step=0;
 tabs.innerHTML=Object.keys(data).map(x=>`<button type="button" data-category="${x}" class="${x===category?'active':''}">${x}</button>`).join('');
 function renderBooking(){services.innerHTML=data[category].map((x,i)=>`<button type="button" class="booking-service ${selected?.name===x[0]?'selected':''}" data-select="${i}"><strong>${x[0]}</strong><small>Approx. ${x[2]} minutes</small><span>${price(x[1])}</span></button>`).join('')}
