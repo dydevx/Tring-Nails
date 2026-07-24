@@ -1,5 +1,41 @@
 const images=[
- ['assets/nails/acrylic-clean.png','Acrylic nails'],['assets/nails/biab-clean.png','BIAB builder gel'],['assets/nails/french-floral-clean.png','French tips'],['assets/nails/pedicure-collage-clean.png','Pedicure collection'],['assets/nails/pink-pedicure-clean.png','French pedicure'],['708498bc0795b78158e4dcb38f0a1dd1a573ec21.jpg','Our Tring salon']];
+ ['assets/nails/acrylic-clean.png','Acrylic nails'],
+ ['assets/nails/biab-clean.png','BIAB builder gel'],
+ ['assets/nails/french-floral-clean.png','French manicure and pedicure'],
+ ['assets/nails/pedicure/pedicure-01-blue.jpg','Royal blue pedicure'],
+ ['assets/nails/pedicure/pedicure-02-pink.jpg','Pink pedicure'],
+ ['assets/nails/pedicure/pedicure-03-lilac.jpg','Soft lilac pedicure'],
+ ['assets/nails/pedicure/pedicure-04-pink-french.jpg','Pink French pedicure'],
+ ['assets/nails/pedicure/pedicure-05-blue-french.jpg','Blue French pedicure'],
+ ['assets/nails/pedicure/pedicure-06-nude.jpg','Natural nude pedicure'],
+ ['assets/nails/pedicure/pedicure-07-white.jpg','Classic white pedicure'],
+ ['assets/nails/pedicure/pedicure-08-peach-french.jpg','Peach French pedicure'],
+ ['assets/nails/pedicure/pedicure-09-peach.jpg','Glossy peach pedicure'],
+ ['assets/nails/pink-pedicure-clean.png','Pale pink French pedicure'],
+ ['708498bc0795b78158e4dcb38f0a1dd1a573ec21.jpg','Our Tring salon']];
+const aiHandImages=[
+ ['assets/nails/ai-library/hand-01-french.jpg','Micro French almond nails'],
+ ['assets/nails/ai-library/hand-02-biab-gold.jpg','Nude BIAB nails with gold detail'],
+ ['assets/nails/ai-library/hand-03-burgundy.jpg','Glossy burgundy nails'],
+ ['assets/nails/ai-library/hand-04-white-ombre.jpg','Pink and white ombre nails'],
+ ['assets/nails/ai-library/hand-05-line-art.jpg','Minimal line-art nails'],
+ ['assets/nails/ai-library/hand-06-green-cat-eye.jpg','Forest green cat-eye nails'],
+ ['assets/nails/ai-library/hand-07-chocolate-french.jpg','Chocolate French nails'],
+ ['assets/nails/ai-library/hand-08-dusty-rose.jpg','Dusty rose pearl nails'],
+ ['assets/nails/ai-library/hand-09-champagne-chrome.jpg','Champagne chrome nails'],
+ ['assets/nails/ai-library/hand-10-classic-red.jpg','Classic red manicure'],
+ ['assets/nails/ai-library/hand-11-black-french.jpg','Black French coffin nails'],
+ ['assets/nails/ai-library/hand-12-lavender-cat-eye.jpg','Lavender cat-eye nails'],
+ ['assets/nails/ai-library/hand-13-botanical.jpg','Milky botanical nail art'],
+ ['assets/nails/ai-library/hand-14-navy-french.jpg','Navy French nails'],
+ ['assets/nails/ai-library/hand-15-peach-ombre.jpg','Peach ombre nails']];
+const aiFootImages=[
+ ['assets/nails/ai-library/foot-01-classic-red.jpg','Classic red pedicure'],
+ ['assets/nails/ai-library/foot-02-pink-french.jpg','Pink French pedicure'],
+ ['assets/nails/ai-library/foot-03-navy-cat-eye.jpg','Navy cat-eye pedicure'],
+ ['assets/nails/ai-library/foot-04-nude-gold.jpg','Nude pedicure with gold detail'],
+ ['assets/nails/ai-library/foot-05-peach.jpg','Glossy peach pedicure']];
+const galleryImages=[...aiHandImages,...aiFootImages,images[images.length-1]];
 const data={
 'Acrylic':[['Full Set with Shellac',40,75],['Full Set with Shellac and French White Tips',43,90],['Acrylic Refill with Shellac',35,60],['Acrylic Refill with French White Tips',38,60],['Take Off and New Acrylic Set',55,90],['Full Set Acrylic Toes',40,60],['Full Set Acrylic Toes with Design',45,75],['Acrylic Toes Refill',35,60],['Take Off and New Acrylic Set with French White Tips',60,90],['Take Off and Redone',50,90],['Nail Design Add-on',5,15],['One Nail Extension with Tip',5,15]],
 'BIAB Builder Gel':[['BIAB Full Set',40,60],['BIAB Full Set with Gel Colour',45,75],['BIAB Full Set with Tips and French White Tips',50,90],['BIAB Refill with Gel Colour',35,60],['BIAB Refill with French White Tips',40,60],['Take Off and New BIAB Set with Tips',48,90],['Take Off and BIAB Overlay',45,75]],
@@ -8,21 +44,42 @@ const data={
 'Extra Services':[['French Tips',5,15],['Chrome Effect',5,15],['Nail Art','From £5',30],['Gel Removal',10,20],['Nail Repair',5,15],['BIAB or Acrylic Removal',15,30],['BIAB or Acrylic Removal with Manicure',25,45]],
 'Ombre':[['Ombre Full Set',50,75],['Ombre Refill, One Colour',35,60],['Take Off and New Ombre Set',50,90]],
 'Cat Eye':[['Cat Eye Full Set',50,75],['Cat Eye Refill',35,60],['Take Off and New Cat Eye Set',50,90]]};
-const popular=[['Acrylic Nails','Beautiful, durable extensions tailored to your shape, length and colour.','From £35',0,'Acrylic','1h 15m'],['BIAB Builder Gel','Strengthen natural nails with a smooth, long-lasting finish.','From £35',1,'BIAB Builder Gel','1h'],['Manicure','Careful shaping and cuticle care with your chosen polished finish.','From £20',2,'Manicure','45m'],['Spa Pedicure','Relaxing foot care with professional shaping and colour.','From £35',3,'Pedicure','1h'],['Ombre Nails','Seamless colour blending for a soft, elegant statement.','From £35',4,'Ombre','1h 15m'],['Cat Eye Nails','A luminous magnetic finish that shifts beautifully in the light.','From £35',0,'Cat Eye','1h 15m'],['Bespoke Nail Art','Personal details, chrome and hand-finished designs.','From £5',1,'Extra Services','30m']];
+const popular=[
+ ['Acrylic Nails','Beautiful, durable extensions tailored to your shape, length and colour.','From £35',aiHandImages[10],'Acrylic','1h 15m'],
+ ['BIAB Builder Gel','Strengthen natural nails with a smooth, long-lasting finish.','From £35',aiHandImages[1],'BIAB Builder Gel','1h'],
+ ['Manicure','Careful shaping and cuticle care with your chosen polished finish.','From £20',aiHandImages[9],'Manicure','45m'],
+ ['Spa Pedicure','Relaxing foot care with professional shaping and colour.','From £35',aiFootImages[1],'Pedicure','1h'],
+ ['Ombre Nails','Seamless colour blending for a soft, elegant statement.','From £35',aiHandImages[14],'Ombre','1h 15m'],
+ ['Cat Eye Nails','A luminous magnetic finish that shifts beautifully in the light.','From £35',aiHandImages[5],'Cat Eye','1h 15m'],
+ ['Bespoke Nail Art','Personal details, chrome and hand-finished designs.','From £5',aiHandImages[12],'Extra Services','30m']];
 const price=v=>typeof v==='number'?`£${v}`:v;
-document.querySelector('#service-grid').innerHTML=popular.map((s,i)=>`<article class="service-card reveal"><img src="${images[s[3]][0]}" loading="lazy" alt="${s[0]} at Tring Nails and Beauty"><div class="service-card-body"><h3>${s[0]}</h3><div class="service-meta"><span>${s[2].replace('From ','<small>From</small> ')}</span><time>${s[5]}</time></div></div><button class="service-book" data-book="${s[4]}">Book Now</button></article>`).join('');
+document.querySelector('#service-grid').innerHTML=popular.map(s=>`<article class="service-card reveal"><img src="${s[3][0]}" loading="lazy" alt="${s[3][1]} for ${s[0]} at Tring Nails and Beauty"><div class="service-card-body"><h3>${s[0]}</h3><div class="service-meta"><span>${s[2].replace('From ','<small>From</small> ')}</span><time>${s[5]}</time></div></div><button class="service-book" data-book="${s[4]}">Book Now</button></article>`).join('');
 const serviceSlider=document.querySelector('#service-grid');
 const slideServices=direction=>serviceSlider.scrollBy({left:direction*(serviceSlider.querySelector('.service-card').getBoundingClientRect().width+24),behavior:'smooth'});
 document.querySelector('#service-prev').onclick=()=>slideServices(-1);document.querySelector('#service-next').onclick=()=>slideServices(1);
 const priceTabs=document.querySelector('#price-tabs'),priceGrid=document.querySelector('#price-grid');let priceCategory='Acrylic';
-const priceImageIndex={'Acrylic':0,'BIAB Builder Gel':1,'Manicure':2,'Pedicure':4,'Extra Services':3,'Ombre':2,'Cat Eye':0};
+const isFootService=(category,name)=>category==='Pedicure'||/\btoe(s)?\b|pedicure/i.test(name);
+const categoryHandPools={
+ 'Acrylic':[0,2,6,7,8,9,10,13,3,4,12,14],
+ 'BIAB Builder Gel':[1,7,8,0,6,13,12,4,9,3,14,2],
+ 'Manicure':[9,0,7,13,8,4,2,12,6,14,3,10],
+ 'Extra Services':[0,8,12,9,4,1,13,7,2,6,10,14],
+ 'Ombre':[3,14,7,0,8,4,12,2,9,13,6,10],
+ 'Cat Eye':[5,11,8,2,13,7,0,4,9,14,6,10]};
+const categoryFootPools={'Pedicure':[0,4,1,3,2],'Acrylic':[3,4,1,0,2]};
+const servicePhoto=(category,name,index)=>{
+ const foot=isFootService(category,name),pool=foot?(categoryFootPools[category]||[0,1,2,3,4]):(categoryHandPools[category]||categoryHandPools.Acrylic);
+ let position=index;
+ if(foot&&category!=='Pedicure')position=data[category].slice(0,index).filter(x=>isFootService(category,x[0])).length;
+ return (foot?aiFootImages:aiHandImages)[pool[position%pool.length]];
+};
 const durationLabel=minutes=>minutes>=60?`${Math.floor(minutes/60)}h${minutes%60?` ${minutes%60}m`:''}`:`${minutes}m`;
 priceTabs.innerHTML=Object.keys(data).map(cat=>`<button type="button" role="tab" aria-selected="${cat===priceCategory}" data-price-cat="${cat}" class="${cat===priceCategory?'active':''}">${cat}</button>`).join('');
-function renderPrices(){const image=images[priceImageIndex[priceCategory]][0];priceGrid.innerHTML=data[priceCategory].map((x,i)=>`<article class="price-service-card"><img src="${images[(priceImageIndex[priceCategory]+i)%5][0]}" loading="lazy" alt="${x[0]} at Tring Nails and Beauty"><div class="price-card-body"><h3>${x[0]}</h3><div class="price-card-meta"><span>${String(price(x[1])).replace('From ','<small>From</small> ').replace(/^£/,'<small>From</small> £')}</span><time>${durationLabel(x[2])}</time></div></div><button type="button" class="price-card-book" data-service="${x[0]}" data-cat="${priceCategory}">Book Now</button></article>`).join('');priceGrid.scrollLeft=0}
+function renderPrices(){priceGrid.innerHTML=data[priceCategory].map((x,i)=>{const image=servicePhoto(priceCategory,x[0],i);return `<article class="price-service-card"><img src="${image[0]}" loading="lazy" alt="${image[1]} for ${x[0]}"><div class="price-card-body"><h3>${x[0]}</h3><div class="price-card-meta"><span>${String(price(x[1])).replace('From ','<small>From</small> ').replace(/^£/,'<small>From</small> £')}</span><time>${durationLabel(x[2])}</time></div></div><button type="button" class="price-card-book" data-service="${x[0]}" data-cat="${priceCategory}">Book Now</button></article>`}).join('');priceGrid.scrollLeft=0}
 renderPrices();
 priceTabs.onclick=e=>{const b=e.target.closest('[data-price-cat]');if(!b)return;priceCategory=b.dataset.priceCat;priceTabs.querySelectorAll('button').forEach(x=>{const active=x===b;x.classList.toggle('active',active);x.setAttribute('aria-selected',active)});renderPrices()};
 const slidePrices=direction=>priceGrid.scrollBy({left:direction*(priceGrid.querySelector('.price-service-card').getBoundingClientRect().width+24),behavior:'smooth'});document.querySelector('.price-prev').onclick=()=>slidePrices(-1);document.querySelector('.price-next').onclick=()=>slidePrices(1);
-document.querySelector('#gallery-grid').innerHTML=images.map((x,i)=>`<button data-image="${i}" aria-label="Open ${x[1]} image"><img src="${x[0]}" loading="lazy" alt="${x[1]} by Tring Nails and Beauty"></button>`).join('');
+document.querySelector('#gallery-grid').innerHTML=galleryImages.map((x,i)=>`<button data-image="${i}" aria-label="Open ${x[1]} image"><img src="${x[0]}" loading="lazy" alt="${x[1]} by Tring Nails and Beauty"></button>`).join('');
 const tabs=document.querySelector('#category-tabs'), services=document.querySelector('#booking-services');let category='Acrylic',selected=null,step=0;
 tabs.innerHTML=Object.keys(data).map(x=>`<button type="button" data-category="${x}" class="${x===category?'active':''}">${x}</button>`).join('');
 function renderBooking(){services.innerHTML=data[category].map((x,i)=>`<button type="button" class="booking-service ${selected?.name===x[0]?'selected':''}" data-select="${i}"><strong>${x[0]}</strong><small>Approx. ${x[2]} minutes</small><span>${price(x[1])}</span></button>`).join('')}
@@ -41,7 +98,7 @@ function choose(cat,name){category=cat;const x=data[cat].find(v=>v[0]===name)||d
 document.addEventListener('click',e=>{const b=e.target.closest('[data-book],[data-service]');if(!b)return;choose(b.dataset.book||b.dataset.cat,b.dataset.service)});
 document.querySelectorAll('.price-toggle').forEach(b=>b.onclick=()=>{const c=b.closest('.price-category'),open=c.classList.toggle('open');b.textContent=open?'−':'+';b.setAttribute('aria-expanded',open)});
 const menu=document.querySelector('.menu-toggle'),nav=document.querySelector('#nav');menu.onclick=()=>{const o=nav.classList.toggle('open');menu.setAttribute('aria-expanded',o)};nav.onclick=()=>{nav.classList.remove('open');menu.setAttribute('aria-expanded','false')};
-const light=document.querySelector('#lightbox'),li=light.querySelector('img'),cap=light.querySelector('figcaption');let current=0;function showImage(n){current=(n+images.length)%images.length;li.src=images[current][0];li.alt=images[current][1];cap.textContent=images[current][1]}
+const light=document.querySelector('#lightbox'),li=light.querySelector('img'),cap=light.querySelector('figcaption');let current=0;function showImage(n){current=(n+galleryImages.length)%galleryImages.length;li.src=galleryImages[current][0];li.alt=galleryImages[current][1];cap.textContent=galleryImages[current][1]}
 document.querySelector('#gallery-grid').onclick=e=>{const b=e.target.closest('[data-image]');if(!b)return;showImage(+b.dataset.image);light.showModal()};light.querySelector('.lightbox-close').onclick=()=>light.close();light.querySelector('.lightbox-prev').onclick=()=>showImage(current-1);light.querySelector('.lightbox-next').onclick=()=>showImage(current+1);let sx=0;light.addEventListener('touchstart',e=>sx=e.touches[0].clientX,{passive:true});light.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>45)showImage(current+(dx<0?1:-1))});
 const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];document.querySelector('#hours-list').innerHTML=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'].map(d=>`<div class="hours-row"><span>${d}</span><span>${d==='Sunday'?'9:00 am – 5:00 pm':'9:00 am – 6:30 pm'}</span></div>`).join('');
 function status(){const parts=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/London',weekday:'long',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(new Date()),get=t=>parts.find(x=>x.type===t).value,day=get('weekday'),mins=+get('hour')*60 + +get('minute'),end=day==='Sunday'?1020:1110,el=document.querySelector('#open-status');let txt='Closed',cls='';if(mins>=540&&mins<end){txt=end-mins<=60?'Closing Soon':'Open Now';cls=end-mins<=60?'closing':'open'}el.textContent=txt;el.className=cls;document.querySelectorAll('.hours-row').forEach(r=>r.classList.toggle('today',r.firstElementChild.textContent===day))}status();setInterval(status,60000);
