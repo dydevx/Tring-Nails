@@ -40,6 +40,12 @@ const realSalonImages=[
  ['biab.jpg','Natural BIAB French manicure'],
  ['22cc2a863116cd4da55da528849704ef2220d224.jpg','Pink floral manicure and pedicure inspiration'],
  ['8c5fb5216a9a1d637e380e03295fba0f256b14b8.jpg','Soft pink French pedicure']];
+const heroSlides=[...document.querySelectorAll('.hero-slides img')];
+const heroDots=[...document.querySelectorAll('.hero-dots button')];
+let heroSlide=0,heroTimer;
+function showHeroSlide(index){heroSlide=(index+heroSlides.length)%heroSlides.length;heroSlides.forEach((slide,i)=>slide.classList.toggle('active',i===heroSlide));heroDots.forEach((dot,i)=>{dot.classList.toggle('active',i===heroSlide);dot.setAttribute('aria-pressed',String(i===heroSlide))})}
+function startHeroSlider(){clearInterval(heroTimer);if(!matchMedia('(prefers-reduced-motion: reduce)').matches)heroTimer=setInterval(()=>showHeroSlide(heroSlide+1),5000)}
+heroDots.forEach((dot,i)=>dot.addEventListener('click',()=>{showHeroSlide(i);startHeroSlider()}));showHeroSlide(0);startHeroSlider();
 // Keep gallery sets distinct from the service-card imagery.
 const galleryImages=[
  aiHandImages[4],aiHandImages[5],aiHandImages[6],aiHandImages[7],
@@ -51,9 +57,9 @@ const data={
 'BIAB Builder Gel':[['BIAB Full Set',40,60],['BIAB Full Set with Gel Colour',45,75],['BIAB Full Set with Tips and French White Tips',50,90],['BIAB Refill with Gel Colour',35,60],['BIAB Refill with French White Tips',40,60],['Take Off and New BIAB Set with Tips',48,90],['Take Off and BIAB Overlay',45,75]],
 'Manicure':[['Classic Manicure without Colour',20,30],['Classic Manicure with Normal Polish',25,45],['Classic Manicure with Gel Colour',30,45],['Classic Manicure with Gel and French White Tips',35,60],['Gel Take Off, Redone and Manicure',35,60],['Gel Take Off, Redone, Manicure and French White Tips',38,60]],
 'Pedicure':[['Normal Polish Only',20,30],['Spa Pedicure with Normal Polish',35,60],['Spa Pedicure with Gel Colour',40,60],['Spa Pedicure with French White Tips',45,75],['Gel Take Off and Redone',30,45],['Gel Take Off and French White Tips',35,60]],
-'Extra Services':[['French Tips',5,15],['Chrome Effect',5,15],['Nail Art','From £5',30],['Gel Removal',10,20],['Nail Repair',5,15],['BIAB or Acrylic Removal',15,30],['BIAB or Acrylic Removal with Manicure',25,45]],
+'Extra Services':[['French Tips',5,15],['Chrome Effect',5,15],['Nail Art',5,30],['Gel Removal',10,20],['Nail Repair',5,15],['BIAB or Acrylic Removal',15,30],['BIAB or Acrylic Removal with Manicure',25,45]],
 'Ombre':[['Ombre Full Set',50,75],['Ombre Refill, One Colour',35,60],['Take Off and New Ombre Set',50,90]],
-'Cat Eye':[['Cat Eye Full Set',50,75],['Cat Eye Refill',35,60],['Take Off and New Cat Eye Set',50,90]]};
+'Cat Eyes':[['Cat Eyes Full Set',50,75],['Cat Eyes Refill',35,60],['Take Off and New Cat Eyes Set',50,90]]};
 const popular=[
  ['Acrylic Nails','Beautiful, durable extensions tailored to your shape, length and colour.','From £35',realSalonImages[0],'Acrylic','1h 15m'],
  ['BIAB Builder Gel','Strengthen natural nails with a smooth, long-lasting finish.','From £35',aiHandImages[1],'BIAB Builder Gel','1h'],
@@ -77,7 +83,7 @@ const categoryImageStart={
  'Manicure':16,
  'Extra Services':1,
  'Ombre':8,
- 'Cat Eye':11,
+ 'Cat Eyes':11,
  'Pedicure':0
 };
 const servicePhoto=(category,name,index)=>{
@@ -93,6 +99,9 @@ renderPrices();
 priceTabs.onclick=e=>{const b=e.target.closest('[data-price-cat]');if(!b)return;priceCategory=b.dataset.priceCat;priceTabs.querySelectorAll('button').forEach(x=>{const active=x===b;x.classList.toggle('active',active);x.setAttribute('aria-selected',active)});renderPrices()};
 const slidePrices=direction=>priceGrid.scrollBy({left:direction*(priceGrid.querySelector('.price-service-card').getBoundingClientRect().width+24),behavior:'smooth'});document.querySelector('.price-prev').onclick=()=>slidePrices(-1);document.querySelector('.price-next').onclick=()=>slidePrices(1);
 document.querySelector('#gallery-grid').innerHTML=galleryImages.map((x,i)=>`<button data-image="${i}" aria-label="Open ${x[1]} image"><img src="${x[0]}" loading="lazy" alt="${x[1]} by Tring Nails and Beauty"></button>`).join('')+`<aside class="gallery-cta"><span>Inspired?</span><h3>Let’s create your next set.</h3><p>Bring your favourite colour, shape or reference — we’ll make it personal.</p><a class="button" href="#booking">Book an Appointment</a></aside>`;
+const gallerySlider=document.querySelector('#gallery-grid');
+const slideGallery=direction=>gallerySlider.scrollBy({left:direction*Math.max(280,gallerySlider.clientWidth*.72),behavior:'smooth'});
+document.querySelector('#gallery-prev').onclick=()=>slideGallery(-1);document.querySelector('#gallery-next').onclick=()=>slideGallery(1);
 const tabs=document.querySelector('#category-tabs'), services=document.querySelector('#booking-services');let category='Acrylic',selected=null,step=0;
 tabs.innerHTML=Object.keys(data).map(x=>`<button type="button" data-category="${x}" class="${x===category?'active':''}">${x}</button>`).join('');
 function renderBooking(){services.innerHTML=data[category].map((x,i)=>`<button type="button" class="booking-service ${selected?.name===x[0]?'selected':''}" data-select="${i}"><strong>${x[0]}</strong><small>Approx. ${x[2]} minutes</small><span>${price(x[1])}</span></button>`).join('')}
@@ -116,4 +125,4 @@ document.querySelector('#gallery-grid').onclick=e=>{const b=e.target.closest('[d
 const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];document.querySelector('#hours-list').innerHTML=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'].map(d=>`<div class="hours-row"><span>${d}</span><span>${d==='Sunday'?'9:00 am – 5:00 pm':'9:00 am – 6:30 pm'}</span></div>`).join('');
 function status(){const parts=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/London',weekday:'long',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(new Date()),get=t=>parts.find(x=>x.type===t).value,day=get('weekday'),mins=+get('hour')*60 + +get('minute'),end=day==='Sunday'?1020:1110,el=document.querySelector('#open-status');let txt='Closed',cls='';if(mins>=540&&mins<end){txt=end-mins<=60?'Closing Soon':'Open Now';cls=end-mins<=60?'closing':'open'}el.textContent=txt;el.className=cls;document.querySelectorAll('.hours-row').forEach(r=>r.classList.toggle('today',r.firstElementChild.textContent===day))}status();setInterval(status,60000);
 const observer=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(x=>observer.observe(x));
-const legal=document.querySelector('#legal'),legalContent=document.querySelector('#legal-content'),copy={privacy:['Privacy Policy','We only use the personal details you enter in the appointment form to prepare your WhatsApp booking request. This website does not store, sell or share your personal information. WhatsApp processes messages under its own privacy terms. Contact the salon on 01442 891576 with any privacy enquiry.'],terms:['Terms and Conditions','Online requests are not confirmed appointments. Your booking is confirmed only when Tring Nails & Beauty responds. Prices may vary with nail length, shape, design complexity and added services. Student discount requires valid ID and is applied in salon. Please contact us as soon as possible if you need to amend or cancel a request.']};document.querySelectorAll('[data-legal]').forEach(b=>b.onclick=()=>{const x=copy[b.dataset.legal];legalContent.innerHTML=`<h2>${x[0]}</h2><p>${x[1]}</p><p>Last updated: July 2026.</p>`;legal.showModal()});legal.querySelector('.legal-close').onclick=()=>legal.close();
+const legal=document.querySelector('#legal'),legalContent=document.querySelector('#legal-content'),copy={privacy:['Privacy Policy','We only use the personal details you enter in the appointment form to prepare your WhatsApp booking request. This website does not store, sell or share your personal information. WhatsApp processes messages under its own privacy terms. Contact the salon on 01442 891576 with any privacy enquiry.'],terms:['Terms and Conditions','Online requests are not confirmed appointments. Your booking is confirmed only when Tring Nails & Beauty responds. Prices may vary with nail length, shape, design complexity and added services. Loyalty rewards are applied in salon and cannot be combined unless agreed by the salon. Please contact us as soon as possible if you need to amend or cancel a request.']};document.querySelectorAll('[data-legal]').forEach(b=>b.onclick=()=>{const x=copy[b.dataset.legal];legalContent.innerHTML=`<h2>${x[0]}</h2><p>${x[1]}</p><p>Last updated: August 2026.</p>`;legal.showModal()});legal.querySelector('.legal-close').onclick=()=>legal.close();

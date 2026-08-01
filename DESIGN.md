@@ -6,20 +6,20 @@ An image-led salon website inspired by BeeNail Aylesbury's generous white space,
 
 ## Colour
 
-- Canvas: `#fffdf9`
+- Canvas: `#fff9fc`
 - Surface: `#ffffff`
-- Champagne: `#c89a3d`
-- Sage: `#758f79`
-- Brown ink: `#49382f`
-- Muted brown: `#75655d`
-- Pale champagne: `#fbf3df`
-- Divider: `#e8dfd5`
+- Pink: `#c95f96`
+- Deep rose: `#9d3f70`
+- Plum ink: `#351f2d`
+- Muted plum: `#705965`
+- Pale pink: `#fdebf4`
+- Divider: `#ecd6e2`
 
-Champagne is the primary action colour. Sage is a restrained secondary signal for open status and small accents.
+Pink is the primary action colour. Deep rose anchors promotional blocks and active states, while plum keeps text and high-contrast areas refined.
 
 ## Typography
 
-Playfair Display is reserved for important salon headlines and the wordmark. DM Sans supports navigation, body copy, pricing and forms. Headings use balanced wrapping and never exceed 96px.
+Nunito matches the reference site's friendly, rounded typography across headlines, navigation, body copy, pricing and forms. Headings use balanced wrapping and never exceed 96px.
 
 ## Layout
 
