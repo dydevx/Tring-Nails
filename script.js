@@ -40,6 +40,12 @@ const realSalonImages=[
  ['biab.jpg','Natural BIAB French manicure'],
  ['22cc2a863116cd4da55da528849704ef2220d224.jpg','Pink floral manicure and pedicure inspiration'],
  ['8c5fb5216a9a1d637e380e03295fba0f256b14b8.jpg','Soft pink French pedicure']];
+const newSalonImages=[
+ ['new1.jpg','Pink French acrylic nails with heart details and crystals'],
+ ['new2.jpg','Pearl chrome French manicure and matching pedicure'],
+ ['new3.jpg','Pink chrome pedicure with white French tips'],
+ ['new4.jpg','White floral pedicure with delicate gold details'],
+ ['new5.jpg','Coral French acrylic nails with crystal details']];
 const heroSlides=[...document.querySelectorAll('.hero-slides img')];
 const heroDots=[...document.querySelectorAll('.hero-dots button')];
 let heroSlide=0,heroTimer;
@@ -48,6 +54,7 @@ function startHeroSlider(){clearInterval(heroTimer);if(!matchMedia('(prefers-red
 heroDots.forEach((dot,i)=>dot.addEventListener('click',()=>{showHeroSlide(i);startHeroSlider()}));showHeroSlide(0);startHeroSlider();
 // Keep gallery sets distinct from the service-card imagery.
 const galleryImages=[
+ ...newSalonImages,
  aiHandImages[4],aiHandImages[5],aiHandImages[6],aiHandImages[7],
  aiHandImages[8],aiHandImages[11],aiHandImages[12],aiHandImages[13],
  aiHandImages[14],aiFootImages[0],aiFootImages[2],aiFootImages[4]
