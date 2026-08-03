@@ -205,3 +205,21 @@ body{background:#fff9fc;color:var(--ink)}
 .hero-contact a:hover{color:#fff}.hero-contact a:hover strong{color:#ffd7e9}
 .hero-contact+.button-row{margin-top:1.45rem}
 @media(max-width:700px){.hero-contact{grid-template-columns:1fr;width:min(100%,430px);gap:.75rem;padding-top:1rem}.hero-contact a{min-height:0;padding:.05rem 0 .05rem 1rem}.hero-contact a+a{padding-left:1rem;border-left:0}.hero-contact a+a:before{content:"";position:absolute;left:0;top:.25rem;bottom:.25rem;width:3px;border-radius:999px;background:rgba(255,255,255,.45)}.hero-contact strong{font-size:.9rem}.hero-contact a:last-child strong{font-size:.98rem}}
+
+/* Student discount welcome offer. */
+#student-offer{width:min(92vw,760px);overflow:hidden;background:#fff;border-radius:16px;color:var(--ink);box-shadow:0 8px 18px rgba(53,31,45,.18)}
+#student-offer[open]{display:grid;grid-template-columns:minmax(210px,.75fr) minmax(0,1.25fr)}
+#student-offer::backdrop{background:rgba(42,22,35,.72)}
+.student-offer-art{display:flex;min-height:430px;flex-direction:column;align-items:center;justify-content:center;background:var(--rose-dark);color:#fff}
+.student-offer-art span{font-size:clamp(4.5rem,10vw,7.5rem);font-weight:800;line-height:.82;letter-spacing:-.04em}
+.student-offer-art small{margin-top:1rem;font-size:1.15rem;font-weight:800;letter-spacing:.22em}
+.student-offer-copy{display:flex;flex-direction:column;justify-content:center;padding:clamp(2rem,5vw,4rem)}
+.student-offer-copy>p:first-child{margin:0;color:var(--rose-dark);font-size:.78rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.student-offer-copy h2{margin:.55rem 0 1rem;font-size:clamp(2rem,4vw,3.25rem);font-weight:800;line-height:1;letter-spacing:-.035em;text-wrap:balance}
+.student-offer-copy>p:not(:first-child){margin:.25rem 0 1rem;font-size:1.05rem}
+.student-offer-copy>small{color:var(--muted);line-height:1.5}
+.student-offer-copy .button{align-self:flex-start;margin-top:1.5rem}
+.student-offer-close{position:absolute;z-index:1;top:.75rem;right:.75rem;display:grid;width:44px;height:44px;place-items:center;border:0;border-radius:50%;background:#f9dcea;color:var(--ink);font-size:1.5rem;cursor:pointer}
+.student-offer-close:hover{background:#f2c3da}
+@media(max-width:620px){#student-offer[open]{grid-template-columns:1fr}.student-offer-art{min-height:145px}.student-offer-art span{font-size:4.25rem}.student-offer-art small{margin-top:.45rem;font-size:.9rem}.student-offer-copy{padding:1.75rem}.student-offer-copy h2{font-size:2.15rem}.student-offer-copy .button{width:100%}.mobile-actions{grid-template-columns:repeat(2,1fr)}}
+@media(prefers-reduced-motion:reduce){#student-offer{scroll-behavior:auto}}
