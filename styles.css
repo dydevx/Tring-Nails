@@ -227,5 +227,5 @@ body{background:#fff9fc;color:var(--ink)}
 /* Lash and brow availability. The flyer content is presented as accessible web content, not as a full-page image. */
 .friday-notice{max-width:980px;margin:-2.5rem auto 2rem;padding:1rem 1.25rem;border-radius:12px;background:#f9dce9;color:#57233f;text-align:center}.friday-notice strong{color:var(--rose-dark)}
 .booking-friday-notice{margin:0 0 1.25rem;text-align:left}
-.price-card-availability{min-height:154px;padding:1.5rem;display:flex;flex-direction:column;justify-content:flex-end;background:linear-gradient(145deg,#fdebf4,#f5cce0);color:#57233f}.price-card-availability span{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em}.price-card-availability strong{font-size:1.55rem;line-height:1.15}.is-friday-only .price-card-book{font:700 1rem 'Nunito',sans-serif}
-@media(max-width:560px){.friday-notice{margin:-.75rem 0 1.5rem;text-align:left}.price-card-availability{min-height:132px}}
+.is-friday-only .price-card-book{font:700 1rem 'Nunito',sans-serif}.is-friday-only img{object-position:center 48%}
+@media(max-width:560px){.friday-notice{margin:-.75rem 0 1.5rem;text-align:left}}
