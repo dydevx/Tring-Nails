@@ -67,7 +67,7 @@ const data={
 'Extra Services':[['French Tips',5,15],['Chrome Effect',5,15],['Nail Art',5,30],['Gel Removal',10,20],['Nail Repair',5,15],['BIAB or Acrylic Removal',15,30],['BIAB or Acrylic Removal with Manicure',25,45]],
 'Ombre':[['Ombre Full Set',50,75],['Ombre Refill, One Colour',35,60],['Take Off and New Ombre Set',50,90]],
 'Cat Eyes':[['Cat Eyes Full Set',50,75],['Cat Eyes Refill',35,60],['Take Off and New Cat Eyes Set',50,90]],
-'Massage':[['Head, Face & Shoulders Massage',60,60],['Full Body Massage',60,null],['Lower Legs & Feet Massage',30,null]],
+'Massage':[['Head, Face & Shoulders Massage',40,30],['Full Body Massage',60,60],['Lower Legs & Feet Massage',30,20]],
 'Lashes & Brows':[['Classic Lashes',40,null],['Hybrid Lashes',48,null],['Russian Lashes',55,null],['LVL Lash Lift',35,null],['Brow Wax & Tint',15,null],['Brow Lamination',30,null]]};
 const popular=[
  ['Acrylic Nails','Beautiful, durable extensions tailored to your shape, length and colour.','From £35',realSalonImages[0],'Acrylic','1h 15m'],
