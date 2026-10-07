@@ -229,3 +229,19 @@ body{background:#fff9fc;color:var(--ink)}
 .booking-friday-notice{margin:0 0 1.25rem;text-align:left}
 .is-friday-only .price-card-book{font:700 1rem 'Nunito',sans-serif}.is-friday-only img{object-position:center 48%}
 @media(max-width:560px){.friday-notice{margin:-.75rem 0 1.5rem;text-align:left}}
+
+/* Google review prompt, grouped with practical visit details. */
+.visit-details{display:grid;gap:1.25rem}
+.review-card{display:grid;grid-template-columns:minmax(0,1fr) 152px;align-items:center;gap:1.5rem;min-width:0;padding:1.5rem;background:var(--ink);color:#fff;border-radius:16px;box-shadow:var(--shadow)}
+.review-copy h3{margin:0 0 .45rem;font-size:clamp(1.45rem,2.5vw,2rem);font-weight:800;line-height:1.05;letter-spacing:-.025em;text-wrap:balance}
+.review-copy p{max-width:35ch;margin:0;color:#f1dce8;font-size:.9rem;line-height:1.55}
+.review-copy>a{display:inline-flex;align-items:center;min-height:44px;margin-top:.65rem;color:#ffd7e9;font-size:.88rem;font-weight:800;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
+.review-copy>a:hover{color:#fff}
+.review-qr{display:block;padding:10px;background:#fff;border-radius:12px;transition:transform .2s ease}
+.review-qr:hover{transform:translateY(-3px)}
+.review-qr:focus-visible,.review-copy>a:focus-visible{outline:3px solid #ffd7e9;outline-offset:4px}
+.review-qr img{width:100%;height:auto;aspect-ratio:1;object-fit:contain}
+@media(max-width:900px){.visit{grid-template-columns:1fr}.visit-details{max-width:720px}}
+@media(max-width:760px){.visit-details{gap:1rem}.review-card{grid-template-columns:minmax(0,1fr) 132px;padding:1.25rem}.review-copy p{font-size:.84rem}}
+@media(max-width:430px){.review-card{grid-template-columns:minmax(0,1fr) 108px;gap:1rem;padding:1rem}.review-copy h3{font-size:1.3rem}.review-copy p{font-size:.78rem;line-height:1.45}.review-copy>a{font-size:.78rem}.review-qr{padding:7px;border-radius:10px}}
+@media(prefers-reduced-motion:reduce){.review-qr{transition:none}}
